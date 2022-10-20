@@ -16,6 +16,7 @@
   <body>
     <div>
       <header>
+        <div class="pfixed"s>
         <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
         <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
 <!--
@@ -40,8 +41,8 @@
           <li><a class="buttons" href="./index.html">Página inicial</a></li>
           <li class=""><a class="buttons" href="./server_advance.html">Configuración avanzada</a></li>
         </ul>
+        </div>
       </header>
-
       <section>
         {{ content }}
       </section>

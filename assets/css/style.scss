@@ -5,7 +5,13 @@
 
 header, section, footer {
   float:none;
+  position: relative;
 }
+
 body > div {
   display: flex;
+}
+
+header > fpixed {
+  position: fixed;
 }
