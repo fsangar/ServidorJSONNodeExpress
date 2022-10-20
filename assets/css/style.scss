@@ -2,3 +2,10 @@
 ---
 
 @import 'jekyll-theme-dinky';
+
+header, section, footer {
+  float:none;
+}
+body > div {
+  display: flex;
+}
