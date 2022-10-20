@@ -36,8 +36,13 @@
             <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
           </ul>
         {% endif %}
-        [Página inicial](./index.html).
-        [Configuración avanzada](./server_advance.html).
+        <ul>
+          {% if site.show_downloads %}
+          <li><a class="buttons" href="./index.html">Página inicial</a></li>
+          <li class=""><a class="buttons" href="./server_advance.html">Configuración avanzada</a></li>
+          {% endif %}
+          <li><a class="buttons github" href="{{ site.github.repository_url }}">View On GitHub</a></li>
+        </ul>
       </header>
 
       <section>
