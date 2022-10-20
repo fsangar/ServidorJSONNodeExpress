@@ -12,7 +12,19 @@ body > div {
   display: flex;
   width: auto;
 }
-
+header {
+  background-color: transparent;
+  border: 0px;
+  box-sizing: border-box;
+}
 header > fpixed {
   position: fixed;
+  width: 170px;
+  background-color: #171717;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+section {
+  width: auto;
 }
