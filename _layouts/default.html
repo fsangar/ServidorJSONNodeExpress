@@ -16,10 +16,8 @@
   <body>
     <div class="wrapper">
       <header>
-<!--        <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
-        <p class="header">{{ site.description | default: site.github.project_tagline }}</p>-->
-        <h1 class="header">{{ JSON + Node + Express }}</h1>
-        <p class="header">{{ Configurar Servidor JSON con Node y Express }}</p>
+        <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
+        <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
 <!--
         <ul>
           {% if site.show_downloads %}
@@ -38,6 +36,8 @@
             <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
           </ul>
         {% endif %}
+        [Página inicial](./index.html).
+        [Configuración avanzada](./server_advance.html).
       </header>
 
       <section>

@@ -2,122 +2,108 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+# Sobre el proyecto
 
-[Link to another page](./another-page.html).
+Vamos a realizar un ejemplo de configuración de un servidor que devuelve el conjunto de destinos a través de un JSON, esto nos permitirá consultar, crear, modificar y borrar un destino.
+Para ello utilizamos **Node** y **Express**.
 
-There should be whitespace between paragraphs.
+# Configuración del proyecto
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+1. Creamos una carpeta y accedemos a ella.
 
-# Header 1
+  > mkdir express-server
+  > 
+  > cd express-server
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+2. Iniciamos el proyecto con node
 
-## Header 2
+> npm init
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+3. Instalamos express (Framework backend de node)
 
-### Header 3
+> npm install express --save
+
+4. Creamos un fichero donde vamos a almacenar los resultados JSON y añadimos el contenido
+
+> mkdir destinos.json
+
+```json
+[
+  "Mérida",
+  "Coria",
+  "Trujillo",
+  "Plasencia",
+  "Cáceres"
+]
+
+```
+
+5. Creamos el archivo **app.js** (servirá la web) con la siguiente información
 
 ```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+const cors = require('cors');
+// Creamos una instancia de express y le decimos que va a usar JSON
+var express = require("express");
+var app = express();
+app.use(express.json());
+// Evitar CORS
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
+
+
+// Abrimos el puerto de escucha al 3000 y una vez abierto mostramos un mensaje.
+app.listen(3000, () => console.log("El servidor está escuchando en el puerto 3000"));
+
+// Creamos una variable JSON
+var destinosFichero = "destinos.json";
+// Leemos el listado de destinos almacenados en JSON
+var misDestinos = JSON.parse(fs.readFileSync(destinosFichero));
+
+// Devolvemos una respuesta sobre una petición GET dinámica
+// Parámetros req = request, res = response, next
+app.get("/ciudades", (req,res,next) => {
+  res.json(misDestinos.filter((c)=> c.toLowerCase().indexOf(req.query.q.toString().toLowerCase())> -1));
+});
+
+// Almacenamos un valor de una petición POST
+app.post("/destinos", (req,res,next) => {
+  // El destino nuevo se introduce en el cuerpo de la petición
+  for (const reqElement of req.body) {
+    misDestinos.push(reqElement);
+  };
+  fs.writeFileSync(destinosFichero, JSON.stringify(misDestinos,null,2));
+  res.json(misDestinos);
+});
+
+// Actualizamos un valor introduciendo su nombre por parámetros
+app.put("/destinos/:name", (req,res,next) => {
+  // :name corresponde con req.params.name
+  let nameIndex = misDestinos.indexOf(req.params.name);
+  if(nameIndex>= 0 && req.body != null){
+    //El parametro a cambiar se introduce en el cuerpo de la petición
+    misDestinos[nameIndex] = req.body[0];
+  }
+  else {
+    res.json(["Error"]);
+  }
+  fs.writeFileSync(destinosFichero,  JSON.stringify(misDestinos,null,2));
+  res.json(misDestinos[nameIndex]);
+});
+
+// Borramos un valor introduciendo su nombre por parámetros
+app.delete("/destinos/:name", (req,res,next) => {
+  // :name corresponde con req.params.name
+  let nameIndex = misDestinos.indexOf(req.params.name);
+  if(nameIndex>= 0){
+    misDestinos.splice(nameIndex,1);
+    fs.writeFileSync(destinosFichero,  JSON.stringify(misDestinos,null,2));
+    res.json(misDestinos);
+  }
+  else {
+    res.json(["Error"]);
+  }
+});
 ```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+[Configuración avanzada](./server_advance.html).
