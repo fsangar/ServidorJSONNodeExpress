@@ -106,8 +106,15 @@ app.delete("/destinos/:name", (req,res,next) => {
 });
 ```
 
-### 6. La organización de carpetas quedará de la siguiente manera
+### 6. Ejecutamos la apliación
+
+```js
+node app.js
+```
+
+### 7. La organización de carpetas quedará de la siguiente manera
 
 > ![img.png](img.png)
 
 [Configuración avanzada](./server_advance.html).
+
