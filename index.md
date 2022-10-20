@@ -9,21 +9,21 @@ Para ello utilizamos **Node** y **Express**.
 
 # Configuración del proyecto
 
-1. Creamos una carpeta y accedemos a ella.
+### 1. Creamos una carpeta y accedemos a ella.
 
   > mkdir express-server
   > 
   > cd express-server
 
-2. Iniciamos el proyecto con node
+### 2. Iniciamos el proyecto con node
 
 > npm init
 
-3. Instalamos express (Framework backend de node)
+### 3. Instalamos express (Framework backend de node)
 
 > npm install express --save
 
-4. Creamos un fichero donde vamos a almacenar los resultados JSON y añadimos el contenido
+### 4. Creamos un fichero donde vamos a almacenar los resultados JSON y añadimos el contenido
 
 > mkdir destinos.json
 
@@ -38,7 +38,7 @@ Para ello utilizamos **Node** y **Express**.
 
 ```
 
-5. Creamos el archivo **app.js** (servirá la web) con la siguiente información
+### 5. Creamos el archivo **app.js** (servirá la web) con la siguiente información
 
 ```js
 const cors = require('cors');
@@ -105,5 +105,9 @@ app.delete("/destinos/:name", (req,res,next) => {
   }
 });
 ```
+
+### 6. La organización de carpetas quedará de la siguiente manera
+
+> ![img.png](img.png)
 
 [Configuración avanzada](./server_advance.html).
