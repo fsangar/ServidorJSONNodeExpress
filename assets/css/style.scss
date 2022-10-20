@@ -28,14 +28,24 @@ header > .pfixed {
   background-color: #171717;
   border: 1px solid #000;
   box-sizing: border-box;
-  padding: 34px 25px 22px 50px;
+  padding: 25px;
   margin: 30px 25px 0 0;
 }
 
 section {
   width: auto;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 header li {
   width: auto;
+}
+
+ol {
+ padding-left: 0;
+}
+
+li {
+  height: auto;
 }
