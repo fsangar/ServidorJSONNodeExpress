@@ -16,8 +16,9 @@ header {
   background-color: transparent;
   border: 0px;
   box-sizing: border-box;
+  width: auto;
 }
-header > fpixed {
+header > .pfixed {
   position: fixed;
   width: 170px;
   background-color: #171717;

@@ -10,23 +10,23 @@ Para ello utilizamos **Node** y **Express**.
 # Configuración del proyecto
 
 ### 1. Creamos una carpeta y accedemos a ella.
-
-  > mkdir express-server
-  > 
-  > cd express-server
+```
+mkdir express-server
+cd express-server
+```
 
 ### 2. Iniciamos el proyecto con node
-
-> npm init
-
+```
+npm init
+```
 ### 3. Instalamos express (Framework backend de node)
-
-> npm install express --save
-
+```
+npm install express --save
+```
 ### 4. Creamos un fichero donde vamos a almacenar los resultados JSON y añadimos el contenido
-
-> mkdir destinos.json
-
+```
+mkdir destinos.json
+```
 ```json
 [
   "Mérida",
