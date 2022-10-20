@@ -17,6 +17,9 @@ header {
   border: 0px;
   box-sizing: border-box;
   width: auto;
+  padding: 0;
+  margin: 0;
+
 }
 header > .pfixed {
   position: fixed;
@@ -24,8 +27,14 @@ header > .pfixed {
   background-color: #171717;
   border: 1px solid #000;
   box-sizing: border-box;
+  padding: 34px 25px 22px 50px;
+  margin: 30px 25px 0 0;
 }
 
 section {
+  width: auto;
+}
+
+header li {
   width: auto;
 }
