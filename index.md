@@ -121,8 +121,6 @@ node app.js
 Para este ejemplo no usamos **destinosAdvanced.json** ni **appAdvanced.js**
 > ![estructura.png](./assets/images/estructura.png)
 
-[Configuración avanzada](./server_advance.html).
-
 ### 8. Pruebas con Postman
 
 #### GET
@@ -133,3 +131,6 @@ Para este ejemplo no usamos **destinosAdvanced.json** ni **appAdvanced.js**
 > ![put_postman.png](./assets/images/put_postman.png)
 #### DEL
 > ![del_postman.png](./assets/images/del_postman.png)
+
+
+[Configuración avanzada](./server_advance.html).
